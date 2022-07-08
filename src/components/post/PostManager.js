@@ -38,3 +38,12 @@ export const createPost = (post) => {
     })
         .then(response => response.json())
 }
+
+export const deletePost = (id) => {
+    return fetch(`${remoteURL}/posts/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+}

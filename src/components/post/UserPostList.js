@@ -1,12 +1,13 @@
 import react, { useEffect, useState } from "react";
-import { PostCard } from "./PostCard";
 import { UserPostCard } from "./UserPostCard";
-import { getPostsByUser } from "./PostManager";
+import { getPostsByUser, deletePost } from "./PostManager";
 import "./../Rare.css"
+import { useParams } from "react-router-dom";
 
 
 export const UserPostList = () => {
-    const [posts, setPosts] = useState([])
+    const {postId} = useParams();
+    const [posts, setPosts] = useState([]);
 
     const loadPosts = () => {
         getPostsByUser().then(data => setPosts(data))
@@ -30,6 +31,11 @@ export const UserPostList = () => {
         setSortedPosts(tempPosts)
     }, [posts])
 
+    // deletes posts
+    const delPost = (postId) => {
+        deletePost(postId)
+            .then(() => getPostsByUser().then(setPosts))
+    }
 
 
     return (
@@ -39,6 +45,7 @@ export const UserPostList = () => {
                 <UserPostCard
                 key={post.id}
                 post={post}
+                delPost={delPost}
                 />
             )}
         </article>
