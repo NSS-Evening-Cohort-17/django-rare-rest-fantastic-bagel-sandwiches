@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./PostCard.css"
 import "./../Rare.css"
 
-export const PostCard = ({ post }) => {
+export const UserPostCard = ({ post }) => {
 
     return (
         <>
@@ -18,10 +18,10 @@ export const PostCard = ({ post }) => {
                 <div className="postcard__footer">
                     <p className="postcard__footer__auth">Posted by {post.user.user.username} in <span className="postcard__footer__cat">{post.category.label}</span> </p>
                 </div>
-                {/* <div>
+                <div>
                     <button className="cardBtn" id="cardBbt__edit">✒️</button>
                     <button className="cardBtn" id="cardBbt__delete">🗑️</button>
-                </div> */}
+                </div>
             </div>
         </section>
         </>
