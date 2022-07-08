@@ -32,7 +32,7 @@ export const NavBar = ({ token, setToken }) => {
           {
             token
               ?
-              <Link to="/posts" className="navbar-item">Posts</Link>
+              <Link to="/posts" className="navbar-item">All Posts</Link>
               :
               ""
 
@@ -41,6 +41,14 @@ export const NavBar = ({ token, setToken }) => {
             token
               ?
               <Link to="/posts/new" className="navbar-item">New Post</Link>
+              :
+              ""
+
+          }
+          {
+            token
+              ?
+              <Link to="/posts/my_posts" className="navbar-item">My Posts</Link>
               :
               ""
 
