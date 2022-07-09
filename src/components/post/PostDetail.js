@@ -1,5 +1,5 @@
 import react, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getPostById } from "./PostManager";
 import "./PostDetail.css"
 
@@ -42,6 +42,8 @@ export const PostDetail = ( ) => {
             </div>
             <p>{post.content}</p>
         </article>
+
+        <Link to={`${postId}/comments`}><button className="post__detail__button">Comments</button></Link> 
         </>
     )
 }
