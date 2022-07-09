@@ -16,3 +16,20 @@
     font-size: 1.25rem;
     color: white;
 }
+
+.category_btn {
+    display: flex;
+    justify-content: center;
+}
+
+.cardBtn {
+    background-color: #48c78e;
+    border: none;
+    font-size: 1.25rem;
+}
+
+.cardBtn:active {
+    background-color: #48c78e;
+    border: none;
+    box-shadow: 2px 2px 5px black;
+}
