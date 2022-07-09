@@ -1,0 +1,15 @@
+.post__detail__group {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.post__detail__info {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.post__detail__category {
+    text-transform: uppercase;
+}
