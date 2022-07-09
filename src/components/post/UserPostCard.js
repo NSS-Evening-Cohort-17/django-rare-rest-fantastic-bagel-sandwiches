@@ -1,6 +1,5 @@
 import react, { useState, useRef } from "react";
-// import { Link } from "react-router-dom";
-// import { DeletePostModal } from "./DeletePostModal";
+import { Link } from "react-router-dom";
 import "./PostCard.css"
 import "./UserPostCard.css"
 import "./../Rare.css"
@@ -42,7 +41,7 @@ export const UserPostCard = ({ post, delPost }) => {
 
         <section className="postcard">
             <div className="postcard__header">
-                <h3 className="postcard__header__title">{post.title}</h3> <span className="postcard__header__date">Posted {post.publication_date}</span>
+                <h3 className="postcard__header__title"><Link to={`/my_posts/${post.id}`}>{post.title}</Link></h3> <span className="postcard__header__date">Posted {post.publication_date}</span>
             </div>
             <div className="postcard__photo">
                 <img src={post.image_url} alt={post.title}/>  

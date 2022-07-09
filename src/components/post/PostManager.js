@@ -18,6 +18,15 @@ export const getPostsByUser = () => {
         .then(response => response.json())
 }
 
+export const getPostById = (postId) => {
+    return fetch(`${remoteURL}/posts/${postId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+        .then(response => response.json())
+}
+
 export const getCategories = () => {
     return fetch(`${remoteURL}/categories`, {
         headers: {
