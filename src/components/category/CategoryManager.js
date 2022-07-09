@@ -20,3 +20,12 @@ export const createCategory = (category) => {
     })
         .then(response => response.json())
 }
+
+export const deleteCategory = (id) => {
+    return fetch(`${remoteURL}/categories/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+}
