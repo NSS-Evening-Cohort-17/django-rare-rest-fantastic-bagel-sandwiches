@@ -1,0 +1,31 @@
+.userdetail {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.user__layout {
+    display: flex;
+    justify-content: center;
+}
+
+.profile__picture {
+    width: 200px;
+    object-fit: none;
+    object-position: 53.25% 11%;
+    border: 2px solid #48c78e;
+}
+
+.user__layout__left {
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.user__layout__right {
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.userdetail__category {
+    font-weight: bold;
+    color: #48c78e;
+}
