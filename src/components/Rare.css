@@ -15,11 +15,16 @@ a {
 }
 
 a:visited {
-    color: white;
+    color: lightgray;
 }
 
 a:hover {
     color: white;
+    font-weight: bold;
+}
+
+a:active {
+    color: black;
     font-weight: bold;
 }
 
