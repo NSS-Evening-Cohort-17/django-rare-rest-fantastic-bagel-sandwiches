@@ -15,7 +15,7 @@ export const PostForm = () => {
     })
 
     const loadCategories = () => {
-        getCategories().then(data => setCategories(data))
+    getCategories().then(data => setCategories(data))
     }
 
     useEffect(() => {
@@ -131,7 +131,7 @@ export const PostForm = () => {
                 className="formBtn"
                 id="postForm__formBtn">
                     Submit
-                </button>
+            </button>
                 
 
         </form>

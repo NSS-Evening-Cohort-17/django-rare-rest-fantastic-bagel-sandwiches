@@ -41,9 +41,12 @@ export const PostDetail = ( ) => {
                 <p>Posted by {post.user?.user.username} in <span className="post__detail__category">{post.category?.label}</span> on {post.publication_date}</p>
             </div>
             <p>{post.content}</p>
+            <div className="post__detail__buttons">
+                <Link to={`${postId}/comments`}><button className="post__detail__button">View comments</button></Link>
+                <Link to={`/posts/comments/new/${postId}`}><button className="post__detail__button">Add comment</button></Link>
+            </div> 
         </article>
-
-        <Link to={`${postId}/comments`}><button className="post__detail__button">Comments</button></Link> 
+        
         </>
     )
 }

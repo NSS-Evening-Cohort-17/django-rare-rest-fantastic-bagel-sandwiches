@@ -1,6 +1,6 @@
 import react, { useEffect, useState } from "react";
 import { PostCard } from "./PostCard";
-import { getPosts } from "./PostManager"
+import { getPosts, deletePost } from "./PostManager"
 import "./../Rare.css"
 
 export const PostList = () => {
@@ -28,6 +28,11 @@ export const PostList = () => {
         setSortedPosts(tempPosts)
     }, [posts])
 
+    // deletes posts
+    const delPost = (postId) => {
+        deletePost(postId)
+            .then(() => getPosts().then(setPosts))
+    }
 
 
     return (
@@ -37,6 +42,7 @@ export const PostList = () => {
                 <PostCard
                 key={post.id}
                 post={post}
+                delPost={delPost}
                 />
             )}
         </article>
