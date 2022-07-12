@@ -15,11 +15,11 @@ a {
 }
 
 a:visited {
-    color: lightgray;
+    color: black
 }
 
 a:hover {
-    color: white;
+    color: rgba(211, 211, 211, 0.9);
     font-weight: bold;
 }
 

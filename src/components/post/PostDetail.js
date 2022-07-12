@@ -31,6 +31,10 @@ export const PostDetail = ( ) => {
     useEffect(() => {
         loadPost()
     }, [])
+
+    useEffect(() => {
+        console.log(post)
+    }, [post])
         
     return (
         <>
@@ -38,7 +42,7 @@ export const PostDetail = ( ) => {
             <img src={post.image_url} alt="{post.title}" /> 
             <h2>{post.title}</h2>
             <div className="post__detail__info">
-                <p>Posted by {post.user?.user.username} in <span className="post__detail__category">{post.category?.label}</span> on {post.publication_date}</p>
+                <p>Posted by <Link to={`/users/${post.user?.id}`}> {post.user?.user.username}</Link> in <span className="post__detail__category">{post.category?.label}</span> on {post.publication_date}</p>
             </div>
             <p>{post.content}</p>
             <div className="post__detail__buttons">
