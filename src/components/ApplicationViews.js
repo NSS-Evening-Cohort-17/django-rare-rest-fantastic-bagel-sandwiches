@@ -4,6 +4,7 @@ import { PostDetail } from "./post/PostDetail"
 import { PostForm } from "./post/PostForm"
 import { PostList } from "./post/PostList"
 import { UserPostList } from "./post/UserPostList"
+import { PostEditForm } from "./post/PostEditForm"
 import { CategoryList } from "./category/CategoryList"
 import { PostDetailComment } from "./post/PostDetailComment"
 import { UpdateCategoryForm } from "./category/UpdateCategory"
@@ -19,6 +20,12 @@ export const ApplicationViews = () => {
       </Route>
       <Route exact path="/posts/new">
         <PostForm />
+      </Route>
+      <Route exact path="/posts/:postId/edit">
+      <PostEditForm />
+      </Route>
+      <Route exact path="/posts/my_posts/:postId/edit">
+      <PostEditForm />
       </Route>
       <Route exact path="/posts/my_posts">
         <UserPostList />
