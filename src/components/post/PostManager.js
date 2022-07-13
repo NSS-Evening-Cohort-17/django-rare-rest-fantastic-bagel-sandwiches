@@ -36,6 +36,15 @@ export const getCategories = () => {
         .then(response => response.json())
 }
 
+export const getPostComments = (postId) => {
+    return fetch(`${remoteURL}/posts/${postId}/comments`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+        .then(response => response.json())
+}
+
 export const createPost = (post) => {
     return fetch(`${remoteURL}/posts`, {
         method: "POST",

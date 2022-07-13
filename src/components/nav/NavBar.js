@@ -53,6 +53,20 @@ export const NavBar = ({ token, setToken }) => {
               ""
 
           }
+          {
+            token
+              ?
+              <Link to="/categories" className="navbar-item">Category Management</Link>
+              :
+              ""
+          }
+          {
+            token
+              ?
+              <Link to="/users" className="navbar-item">User Management</Link>
+              :
+              ""
+          }
         </div>
 
         <div className="navbar-end">

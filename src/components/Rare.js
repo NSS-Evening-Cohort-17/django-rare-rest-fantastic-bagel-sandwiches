@@ -13,12 +13,16 @@ export const Rare = () => {
     setTokenState(newToken)
   }
 
+  const setUserId = (userId) => {
+    localStorage.setItem('userId', userId)
+  }
+
   return <>
     {
       token
         ?
         <Route>
-          <NavBar token={token} setToken={setToken} />
+          <NavBar token={token} setToken={setToken}/>
           <ApplicationViews />
         </Route>
         :
@@ -27,7 +31,7 @@ export const Rare = () => {
 
     <Route exact path="/login" >
       <NavBar token={token} setToken={setToken} />
-      <Login token={token} setToken={setToken} />
+      <Login token={token} setToken={setToken} setUserId={setUserId} />
     </Route>
 
     <Route path="/register" exact>
