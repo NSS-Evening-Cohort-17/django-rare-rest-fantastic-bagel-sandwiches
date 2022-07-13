@@ -1,6 +1,6 @@
 import react, { useEffect, useState } from "react";
 import { UserPostCard } from "./UserPostCard";
-import { getPostsByUser, deletePost } from "./PostManager";
+import { getPostsByUser, deletePost, updatePost } from "./PostManager";
 import "./../Rare.css"
 import { useParams } from "react-router-dom";
 
@@ -36,6 +36,7 @@ export const UserPostList = () => {
         deletePost(postId)
             .then(() => getPostsByUser().then(setPosts))
     }
+
 
 
     return (

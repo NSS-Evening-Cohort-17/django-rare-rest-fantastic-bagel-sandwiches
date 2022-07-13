@@ -18,10 +18,10 @@ export const PostCard = ({ post }) => {
                 <div className="postcard__footer">
                     <p className="postcard__footer__auth">Posted by {post.user.user.username} in <span className="postcard__footer__cat">{post.category.label}</span> </p>
                 </div>
-                {/* <div>
+                <div>
                     <button className="cardBtn" id="cardBbt__edit">✒️</button>
-                    <button className="cardBtn" id="cardBbt__delete">🗑️</button>
-                </div> */}
+                    {/* <button className="cardBtn" id="cardBbt__delete">🗑️</button> */}
+                </div>
             </div>
         </section>
         </>
