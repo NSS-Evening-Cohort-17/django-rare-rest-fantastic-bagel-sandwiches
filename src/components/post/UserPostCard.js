@@ -51,16 +51,13 @@ export const UserPostCard = ({ post, delPost }) => {
                     <p className="postcard__footer__auth">Posted by {post.user.user.username} in <span className="postcard__footer__cat">{post.category.label}</span> </p>
                 </div>
                 <div>
-                    <button 
+                    <button
+                         
                         className="cardBtn" 
                         id="cardBbt__edit">
-                            ✒️
+                        <Link to={`/posts/${post.id}/edit`}><button className="cardBtn">✒️</button> </Link>
                     </button>
                     <button 
-                        // onClick={() => {
-                        //     console.log('click post', post)
-                        //     delPost(post.id)
-                        // }}
                         onClick={() => {
                             deleteDialog.current.showModal()
                         }}
