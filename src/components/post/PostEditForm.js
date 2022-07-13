@@ -34,10 +34,10 @@ export const PostEditForm = () => {
                     setCurrentPost({
                         id: postId,
                         title: data.title,
-                        publicationDate: data.publicationDate,
-                        imageURL: data.imageURL,
+                        publicationDate: data.publication_date,
+                        imageURL: data.image_url,
                         content: data.content,
-                        category: data.category
+                        category: data.category.id
                     })
                 })
         }
@@ -146,10 +146,11 @@ export const PostEditForm = () => {
 
                     const updatedPost = {
                         title: currentPost.title,
-                        publicationDate: currentPost.publicationDate,
-                        imageURL: currentPost.imageURL,
+                        publication_date: currentPost.publicationDate,
+                        image_url: currentPost.imageURL,
                         content: currentPost.content,
-                        category: currentPost.category
+                        category: currentPost.category,
+                        approved: 1
                     }
 
                     updatePost(updatedPost, postId)

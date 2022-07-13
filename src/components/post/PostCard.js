@@ -53,10 +53,6 @@ export const PostCard = ({ post, delPost}) => {
                             <Link to={`posts/${post.id}/edit`}><button className="cardBtn">✒️</button> </Link>
                     </button>
                     <button 
-                        // onClick={() => {
-                        //     console.log('click post', post)
-                        //     delPost(post.id)
-                        // }}
                         onClick={() => {
                             deletePostCardDialog.current.showModal()
                         }}

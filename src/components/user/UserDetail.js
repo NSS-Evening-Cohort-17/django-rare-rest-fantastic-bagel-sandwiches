@@ -1,12 +1,13 @@
 import react, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getUserById } from "./UserManager";
 import "./UserDetail.css"
 
 export const UserDetail = () => {
-
+    const history = useHistory();
+    const loggedInUserId = parseInt(localStorage.getItem("userId"));
     const {userId} = useParams();
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState([]);
 
     const loadUser = () => {
         getUserById(userId)
@@ -45,7 +46,22 @@ export const UserDetail = () => {
     }
 
     const formattedDate = changeDateFormat(user.createdOn)
-  
+
+    const handleSubmit = () => {
+        evt.preventDefault()
+
+        const newSub = {
+            follower: userId,
+            author: loggedInUserId,
+            created_on: "2022-05-05",
+            ended_on: ""
+        }
+        
+        createSubscription(newSub)
+        .then(() => history.push("/"))
+    }
+ 
+
     if (user?.profileImage)
         return (
             <>
@@ -84,7 +100,10 @@ export const UserDetail = () => {
                         <div className="user__layout__buttons">
                             <button
                                 className="user__layout__button"
-                            >Subscribe</button>
+                                onClick={handleSubmit}
+                                >
+                            Subscribe
+                            </button>
                         </div>
                     </div>
                 </div>
