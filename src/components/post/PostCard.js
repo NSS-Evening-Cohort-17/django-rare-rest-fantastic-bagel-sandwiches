@@ -50,7 +50,7 @@ export const PostCard = ({ post, delPost}) => {
                     <button 
                         className="cardBtn" 
                         id="cardBbt__edit">
-                            ✒️
+                            <Link to={`posts/${post.id}/edit`}><button className="cardBtn">✒️</button> </Link>
                     </button>
                     <button 
                         // onClick={() => {

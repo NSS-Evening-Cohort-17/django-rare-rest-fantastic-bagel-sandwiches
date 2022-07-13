@@ -35,7 +35,9 @@ export const CategoryCard = ({ category }) => {
             <div className="category_btn">
                 <button 
                     className="cardBtn" 
-                    id="cardBbt__edit">✒️</button>
+                    id="cardBbt__edit"
+                    onClick={() => history.push(`/categories/${category.id}/edit`)}
+                    >✒️</button>
                 <button 
                     className="cardBtn" 
                     id="cardBbt__delete"
