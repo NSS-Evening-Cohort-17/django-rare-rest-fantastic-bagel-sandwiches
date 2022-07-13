@@ -62,6 +62,9 @@ export const UserDetail = () => {
                             <p><span className="userdetail__category">About {user?.firstName}:</span> {user?.bio}</p>
                         </div>
                     </div>
+                <div>
+                    
+                </div>
                 </div>
 
             </article>
@@ -78,6 +81,11 @@ export const UserDetail = () => {
                         <p><span className="userdetail__category">Username:</span> {user?.username}</p>
                         <p><span className="userdetail__category">Joined:</span> {formattedDate}</p>
                         <p><span className="userdetail__category">About {user?.firstName}:</span> {user?.bio}</p>
+                        <div className="user__layout__buttons">
+                            <button
+                                className="user__layout__button"
+                            >Subscribe</button>
+                        </div>
                     </div>
                 </div>
             </div>
