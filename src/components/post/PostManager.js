@@ -76,3 +76,12 @@ export const updatePost = (post, id) => {
         body: JSON.stringify(post)
     })
 }
+
+export const getPostByCategory = (categoryId) => {
+    return fetch(`${remoteURL}/posts?category=${categoryId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+        .then(response => response.json())
+}
