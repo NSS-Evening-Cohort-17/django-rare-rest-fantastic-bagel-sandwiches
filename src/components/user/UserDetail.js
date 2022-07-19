@@ -1,12 +1,15 @@
 import react, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { getUserById } from "./UserManager";
+import { createSubscription, getSubscriptions, getSubscriptionsBySubscribedTo, deleteSubscription } from "../Subscription/SubscriptionManager";
 import "./UserDetail.css"
 
 export const UserDetail = () => {
+    const [isLoading, setIsLoading] = useState(true)
     const history = useHistory();
     const loggedInUserId = parseInt(localStorage.getItem("userId"));
-    const {userId} = useParams();
+    let {userId} = useParams();
+    userId = parseInt(userId);
     const [user, setUser] = useState([]);
 
     const loadUser = () => {
@@ -24,16 +27,12 @@ export const UserDetail = () => {
                 }
                 ))
     }
-
+    
     useEffect(() => {
         setTimeout(() => loadUser(), 500)
     }, [])
 
-    useEffect(() => {
-        console.log(user)
-    }, [user])
-
-    // Changes date from yyyy-MM-dd to weekday, month date, year
+       // Changes date from yyyy-MM-dd to weekday, month date, year
     const changeDateFormat = (inputDate) => {
         let date = new Date(inputDate);
         
@@ -47,20 +46,60 @@ export const UserDetail = () => {
 
     const formattedDate = changeDateFormat(user.createdOn)
 
-    const handleSubmit = () => {
-        evt.preventDefault()
+    let todayDate = new Date()
+    const dd = String(todayDate.getDate()).padStart(2, '0')
+    const mm = String(todayDate.getMonth() +1).padStart(2, '0')
+    const yyyy = todayDate.getFullYear()
+    todayDate = `${yyyy}-${mm}-${dd}`
+    todayDate = todayDate.toString()
+
+    const handleSubscribe = () => {
 
         const newSub = {
-            follower: userId,
-            author: loggedInUserId,
-            created_on: "2022-05-05",
-            ended_on: ""
+            follower: loggedInUserId,
+            author: parseInt(userId),
+            created_on: todayDate,
+            ended_on: "2222-12-30"
         }
         
         createSubscription(newSub)
         .then(() => history.push("/"))
     }
+
+    const handleUnsubscribe = (id) => {
+        console.log(id)
+        deleteSubscription(id)
+        .then(() => history.push("/"))
+    }
  
+    //Lines 69-89 set state for 'isSubscribed', which sets state for buttons ternary
+    const [isSubscribed, setIsSubscribed] = useState(false)
+    const [subscribedTo, setSubscribedTo] = useState([]);
+    const [subToBeDeleted, setSubToBeDelete] = useState([])
+    
+    useEffect(() => {
+        getSubscriptionsBySubscribedTo()
+            .then(data => (setSubscribedTo(data)))
+    }, [])
+
+    useEffect(() => {
+        subscribedTo.forEach(sub => {
+            if (userId === sub.author.id && loggedInUserId === sub.follower.id) {
+            setIsSubscribed(true)
+            setSubToBeDelete(sub)
+            // console.log('true')
+            console.log('isSubscribed', isSubscribed)
+            }
+            // else
+            //     setIsSubscribed(false)
+            //     // console.log('false')
+        })
+    }, [subscribedTo])
+
+    useEffect(() => {
+        console.log('subToBeDeleted', subToBeDeleted)
+    }, [subToBeDeleted])
+
 
     if (user?.profileImage)
         return (
@@ -78,15 +117,32 @@ export const UserDetail = () => {
                             <p><span className="userdetail__category">About {user?.firstName}:</span> {user?.bio}</p>
                         </div>
                     </div>
-                <div>
-                    
-                </div>
+                    <div className="user__layout__buttons">
+                        {
+                            isSubscribed === true ?
+                                <button
+                                    type="submit"
+                                    className="user__layout__button__unsubscribe"
+                                    onClick={() => {handleUnsubscribe(subToBeDeleted.id)}}   
+                                    >
+                                Unsubscribe
+                                </button> 
+                            :
+                                <button
+                                    type="submit"
+                                    className="user__layout__button"
+                                    onClick={handleSubscribe} 
+                                    >
+                                Subscribe
+                                </button> 
+                        }
+                    </div>
                 </div>
 
             </article>
             </>
         )
-        else
+    else
         return (
         <>
         <article className="userdetail">
@@ -98,12 +154,24 @@ export const UserDetail = () => {
                         <p><span className="userdetail__category">Joined:</span> {formattedDate}</p>
                         <p><span className="userdetail__category">About {user?.firstName}:</span> {user?.bio}</p>
                         <div className="user__layout__buttons">
-                            <button
-                                className="user__layout__button"
-                                onClick={handleSubmit}
-                                >
-                            Subscribe
-                            </button>
+                        {
+                            isSubscribed === true ?
+                                <button
+                                        type="submit"
+                                        className="user__layout__button__unsubscribe"
+                                        onClick={() => {handleUnsubscribe(subToBeDeleted.id)}}  
+                                        >
+                                Unsubscribe
+                                </button> 
+                            :
+                                <button
+                                    type="submit"
+                                    className="user__layout__button"
+                                    onClick={handleSubscribe}  
+                                    >
+                                Subscribe
+                                </button> 
+                        }
                         </div>
                     </div>
                 </div>
@@ -114,3 +182,4 @@ export const UserDetail = () => {
     )
     
 }
+ 

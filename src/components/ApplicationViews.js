@@ -11,10 +11,14 @@ import { UpdateCategoryForm } from "./category/UpdateCategory"
 import { CommentForm } from "./comment/CommentForm"
 import { UserList } from "./user/UserList"
 import { UserDetail } from "./user/UserDetail"
+import { SubscriptionList } from "./Subscription/SubscriptionList"
 
 export const ApplicationViews = () => {
   return (
     <>
+      <Route exact path="/">
+        <SubscriptionList />
+      </Route>
       <Route exact path="/posts">
         <PostList />
       </Route>

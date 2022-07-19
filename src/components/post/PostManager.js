@@ -76,3 +76,12 @@ export const updatePost = (post, id) => {
         body: JSON.stringify(post)
     })
 }
+
+export const getPostsByUserSubscription = () => {
+    return fetch(`${remoteURL}/posts/subscribed`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("token")}`
+        }
+    })
+        .then(response => response.json())
+}
