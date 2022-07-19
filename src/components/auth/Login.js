@@ -20,8 +20,6 @@ export const Login = ({ setToken, setUserId }) => {
       if ("valid" in res && res.valid) {
         setToken(res.token)
         setUserId(res.userId)
-        console.log('res', res)
-        console.log(res.userId)
         history.push("/")
       }
       else {
